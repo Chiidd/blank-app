@@ -1,6 +1,35 @@
 import streamlit as st
+import pandas as pd
+import joblib
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+# Load model and preprocessor
+model = joblib.load("model/rating_model.pkl")
+scaler = joblib.load("model/preprocessor.pkl")
+
+st.title("🛒 Supermarket Customer Rating Predictor")
+
+st.write("Enter transaction details to predict customer rating")
+
+# User inputs
+unit_price = st.number_input("Unit Price", min_value=0.0)
+quantity = st.number_input("Quantity", min_value=1)
+total = st.number_input("Total Purchase", min_value=0.0)
+cogs = st.number_input("Cost of Goods Sold", min_value=0.0)
+gross_income = st.number_input("Gross Income", min_value=0.0)
+
+# Convert input into dataframe
+input_data = pd.DataFrame({
+    "Unit price": [unit_price],
+    "Quantity": [quantity],
+    "Total": [total],
+    "cogs": [cogs],
+    "gross income": [gross_income]
+})
+
+# Scale input
+input_scaled = scaler.transform(input_data)
+
+# Predict
+if st.button("Predict Rating"):
+    prediction = model.predict(input_scaled)
+    st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
