@@ -3,8 +3,8 @@ import pandas as pd
 import joblib
 
 # Load model and preprocessor
-model = joblib.load("model/rating_model.pkl")
-scaler = joblib.load("model/preprocessor.pkl")
+model = joblib.load("rating_model.pkl")
+scaler = joblib.load("preprocessor.pkl")
 
 st.title("🛒 Supermarket Customer Rating Predictor")
 
