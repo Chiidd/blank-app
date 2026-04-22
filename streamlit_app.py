@@ -37,9 +37,10 @@ input_data = pd.DataFrame({
 
 # Scale input
 input_scaled = scaler.transform(input_data)
-prediction = model.predict(input_scaled)
+# prediction = model.predict(input_scaled)
 
 # Predict
 if st.button("Predict Rating"):
-    prediction = model.predict(input_scaled)
+ prediction = model.predict(input_scaled)
     st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
+ 
