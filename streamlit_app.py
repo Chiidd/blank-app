@@ -1,19 +1,11 @@
-# from sklearn.pipelinr import Pipeline
-
-# pipeline = Pipeline([
- #    ('scaler', scaler),
-#    ('model',rf)
-# ])
-
-# joblib.dump(pipeline, "full_pipeline.pkl")
 
 import streamlit as st
 import pandas as pd
 import joblib
 
 # Load model and preprocessor
-model = joblib.load("rating_model.pkl")
-scaler = joblib.load("preprocessor.pkl")
+pipeline = joblib.load("pipeline.pkl")
+
 
 st.title("🛒 Supermarket Customer Rating Predictor")
 
@@ -35,12 +27,11 @@ input_data = pd.DataFrame({
     "gross income": [gross_income]
 })
 
-# Scale input
-input_scaled = scaler.transform(input_data)
-# prediction = model.predict(input_scaled)
+# Predict
+prediction = pipeline.predict(input_data)
 
 # Predict
-if st.button("Predict Rating"):
- prediction = model.predict(input_scaled)
- st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
+# if st.button("Predict Rating"):
+ # prediction = pipeline.predict(input_scaled)
+# st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
  
