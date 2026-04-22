@@ -24,7 +24,7 @@ input_data = pd.DataFrame({
     "Quantity": [quantity],
     "Total": [total],
     "cogs": [cogs],
-    "gross income": [revenue]
+    "gross income": [gross_income]
 })
 
 # Predict
