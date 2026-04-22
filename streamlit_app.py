@@ -1,3 +1,12 @@
+# from sklearn.pipelinr import Pipeline
+
+# pipeline = Pipeline([
+ #    ('scaler', scaler),
+#    ('model',rf)
+# ])
+
+# joblib.dump(pipeline, "full_pipeline.pkl")
+
 import streamlit as st
 import pandas as pd
 import joblib
@@ -28,6 +37,7 @@ input_data = pd.DataFrame({
 
 # Scale input
 input_scaled = scaler.transform(input_data)
+prediction = model.predict(input_scaled)
 
 # Predict
 if st.button("Predict Rating"):
