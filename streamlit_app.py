@@ -42,5 +42,5 @@ input_scaled = scaler.transform(input_data)
 # Predict
 if st.button("Predict Rating"):
  prediction = model.predict(input_scaled)
-    st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
+ st.success(f"Predicted Customer Rating: {prediction[0]:.2f}")
  
