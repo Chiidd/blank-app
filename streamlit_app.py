@@ -20,11 +20,11 @@ gross_income = st.number_input("Gross Income", min_value=0.0)
 
 # Convert input into dataframe
 input_data = pd.DataFrame({
-    "Unit price": [unit_price],
+    "Unit price": [unit_cost],
     "Quantity": [quantity],
     "Total": [total],
     "cogs": [cogs],
-    "gross income": [gross_income]
+    "gross income": [revenue]
 })
 
 # Predict
